@@ -84,17 +84,17 @@
 N">
 <meta property="og:type" content="article">
 <meta property="og:title" content="First post from my blog">
-<meta property="og:url" content="https://brian-zhao.github.io/2016/04/25/hello/index.html">
+<meta property="og:url" content="www.brianzhao.xyz/2016/04/25/hello/index.html">
 <meta property="og:site_name" content="Brian's Blog">
 <meta property="og:description" content="First postToday is Anzac Day, as a nation that about 200 years of history, nearly attended every major battle of modern history.Well, no comment on whether this nation is loving peace or loving war.
 N">
-<meta property="og:image" content="https://brian-zhao.github.io/uploads/IMG_5577.JPG">
+<meta property="og:image" content="www.brianzhao.xyz/uploads/IMG_5577.JPG">
 <meta property="og:updated_time" content="2016-04-25T12:33:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="First post from my blog">
 <meta name="twitter:description" content="First postToday is Anzac Day, as a nation that about 200 years of history, nearly attended every major battle of modern history.Well, no comment on whether this nation is loving peace or loving war.
 N">
-<meta name="twitter:image" content="https://brian-zhao.github.io/uploads/IMG_5577.JPG">
+<meta name="twitter:image" content="www.brianzhao.xyz/uploads/IMG_5577.JPG">
 
 
 
@@ -147,7 +147,7 @@ N">
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
-  <p class="site-subtitle">扯淡，也是门学问！</p>
+  <p class="site-subtitle">为提高维度而不断奋斗</p>
 </div>
 
 <div class="site-nav-toggle">
@@ -258,6 +258,15 @@ N">
           
 
           
+          
+             <span id="/2016/04/25/hello/" class="leancloud_visitors" data-flag-title="First post from my blog">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">visitors </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
           
 
           
@@ -557,6 +566,99 @@ N">
   
 
   
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("cBcVNK7NB9PTXaBnXKPW95pV-gzGzoHsz", "K9qOWH7xLSvnWAmNXViGLOiW");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
 
   
 
