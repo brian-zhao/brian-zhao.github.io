@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Programming,C++,Ubuntu," />
 
 
 
@@ -80,15 +80,16 @@
 
 
 
-<meta name="description" content="Impossible is Nothing">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Brian's Blog">
-<meta property="og:url" content="www.brianzhao.xyz/tags/programming/index.html">
+<meta name="description" content="I had a compute engine instance with Ubuntu TLS 14.4, and there is no gcc installed initially, so the following code is to install gcc-6 on Ubuntu.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Intall C++ on Ubuntu">
+<meta property="og:url" content="www.brianzhao.xyz/2017/07/06/2017-07-06/index.html">
 <meta property="og:site_name" content="Brian's Blog">
-<meta property="og:description" content="Impossible is Nothing">
+<meta property="og:description" content="I had a compute engine instance with Ubuntu TLS 14.4, and there is no gcc installed initially, so the following code is to install gcc-6 on Ubuntu.">
+<meta property="og:updated_time" content="2017-07-05T14:50:31.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Brian's Blog">
-<meta name="twitter:description" content="Impossible is Nothing">
+<meta name="twitter:title" content="Intall C++ on Ubuntu">
+<meta name="twitter:description" content="I had a compute engine instance with Ubuntu TLS 14.4, and there is no gcc installed initially, so the following code is to install gcc-6 on Ubuntu.">
 
 
 
@@ -106,7 +107,7 @@
   };
 </script>
 
-  <title> Tag: programming | Brian's Blog </title>
+  <title> Intall C++ on Ubuntu | Brian's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -136,7 +137,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -214,46 +215,133 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        programming
-        <small>Tag</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Intall C++ on Ubuntu
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2017-07-06T00:38:00+10:00" content="2017-07-06">
+              2017-07-06
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <p>I had a compute engine instance with Ubuntu TLS 14.4, and there is no gcc installed initially, so the following code is to install gcc-6 on Ubuntu.</p>
+<a id="more"></a>
+<p>Run the following code<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update &amp;&amp; \</span><br><span class="line">sudo apt-get install build-essential software-properties-common -y &amp;&amp; \</span><br><span class="line">sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y &amp;&amp; \</span><br><span class="line">sudo apt-get update &amp;&amp; \</span><br><span class="line">sudo apt-get install gcc-snapshot -y &amp;&amp; \</span><br><span class="line">sudo apt-get update &amp;&amp; \</span><br><span class="line">sudo apt-get install gcc-6 g++-6 -y &amp;&amp; \</span><br><span class="line">sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-6 60 --slave /usr/bin/g++ g++ /usr/bin/g++-6 &amp;&amp; \</span><br><span class="line">sudo apt-get install gcc-4.8 g++-4.8 -y &amp;&amp; \</span><br><span class="line">sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 60 --slave /usr/bin/g++ g++ /usr/bin/g++-4.8;</span><br></pre></td></tr></table></figure></p>
+<p>When completed, you must change to the gcc you want to work with by default. Type in your terminal:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo update-alternatives --config gcc</span><br></pre></td></tr></table></figure></p>
+<p>To verify if it worked. Just type in your terminal<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -v</span><br></pre></td></tr></table></figure></p>
 
-      <h1 class="post-title">
+      
+    </div>
+    
+    <div>
+      
         
-            <a class="post-title-link" href="/2017/06/12/2017-06-12/" itemprop="url">
-              
-                <span itemprop="name">The books for programmers recommended by the founder of StackOverflow Jeff Atwood</span>
-              
-            </a>
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
+      
+    </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-06-12T22:18:00+10:00"
-              content="2017-06-12" >
-          06-12
-        </time>
-      </div>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Programming/" rel="tag">#Programming</a>
+          
+            <a href="/tags/C/" rel="tag">#C++</a>
+          
+            <a href="/tags/Ubuntu/" rel="tag">#Ubuntu</a>
+          
+        </div>
+      
 
-    </header>
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/30/2017-06-30/" rel="next" title="Why everyone respects Jeff Dean at Google">
+                <i class="fa fa-chevron-left"></i> Why everyone respects Jeff Dean at Google
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -261,6 +349,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -280,8 +372,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -324,6 +425,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">This post does not have a Table of Contents</p>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -443,58 +555,10 @@
 
 
   
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
 
 
-
-  
-
-
-
-  
-
-
-
-  
-  
-  
-
-  
-
-  
-
-</body>
-</html>
-ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
-
-
-
-  
 
   
 
